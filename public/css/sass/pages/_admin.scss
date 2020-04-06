@@ -1,0 +1,106 @@
+.admin-nav {
+    display: block;
+}
+
+
+.content-admin {
+    
+    header {
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+                display: block;
+                height: auto;
+            }
+
+            span {
+                display: block;
+                font-weight: bold;
+                color: #3c3c3c;
+            }
+        }
+    }
+
+    .global-work {
+        padding: 50px;
+        span {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+            margin: 30px 0;
+        }
+
+        form {
+            margin: 20px;
+            label {
+                display: block;
+                margin: 0;
+                font-size: 20px;
+            }
+    
+            input,select,textarea {
+                display: block;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                border: 1px solid #000;
+                padding: 10px;
+                font-size: 13px;
+                display: block;
+                width: 100%;
+            }
+
+            select {
+                option {
+                    text-transform: capitalize;
+                }
+            }
+
+        }
+
+        .btn {
+            cursor: pointer;
+            padding: 10px 30px;
+            display: block;
+            border: 1px solid #000;
+        }
+
+        .admin-card {
+            border-radius: 10px;
+            border:1px solid #000;
+            text-align: center;
+            padding: 50px;
+            margin: 20px;
+            
+            p {
+                margin: 0;
+                font-size: 24px;
+                font-weight: bold;
+                padding: 10px;
+
+                i {
+                    margin-right: 10px;
+                }
+
+                a {
+                    color: #000;
+                    &:hover {
+                        color: #000;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .login-form {
+            width: 50%;
+            margin: auto;
+        }
+
+    }
+
+}

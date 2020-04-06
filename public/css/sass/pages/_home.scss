@@ -1,0 +1,48 @@
+.global-work {
+    padding: 10px;
+
+    h3 {
+        padding: 20px;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    > p {
+        font-size: 20px;
+        margin: 20px;
+        
+        span {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+    .art-card {
+        position: relative;
+        background-color: #f1f1f1;
+        margin:20px;
+        border-radius:0 0 10px 10px;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 0;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 12px;
+            background-color:rgba(#000, .8);
+            color:#dedede;
+            padding: 5px 10px;
+        }
+    }
+}

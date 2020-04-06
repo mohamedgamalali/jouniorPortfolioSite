@@ -1,0 +1,31 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+//Helpers
+@import 'sass/helpers/vars';
+@import 'sass/helpers/mixins';
+
+body {
+    background-color: #fff;
+}
+
+//Components
+@import 'sass/components/classes';
+
+
+//Layout
+@import 'sass/layout/header';
+@import 'sass/layout/footer';
+@import 'sass/layout/global';
+@import 'sass/layout/media';
+
+
+//pages
+@import 'sass/pages/home';
+@import 'sass/pages/contact';
+@import 'sass/pages/about';
+@import 'sass/pages/admin';

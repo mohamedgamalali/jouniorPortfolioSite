@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR. - Admin Login</title>
+    <link rel="icon" type="image/gif/png" href="/imgs/icon.png">
+
+
+    <!--Start CSS links-->
+    <link rel="stylesheet" href="/css/bootstrap.css"> <!--Bootstrap.-->
+    <link rel="stylesheet" href="/css/themify-icons.css"> <!--Themify icons.-->
+    <link rel="stylesheet" href="/css/mainstyle.css"> <!--main style css file.-->
+
+</head>
+
+
+<body>
+
+    <!--Start Drop down Menu for small screen-->
+    <nav class="admin-nav">
+
+        <div class="upper-nav">
+            <ul class="list-unstyled social-media">
+                <li><a href="https://www.facebook.com/Muhaameedd.Ashraf"><i class="ti-facebook"></i></a></li>
+                <li><a href="https://twitter.com/Jrrmohamed"><i class="ti-twitter-alt"></i></a></li>
+                <li><a href="https://www.instagram.com/jouniorone/"><i class="ti-instagram"></i></a></li>
+            </ul>
+            <h2>JR.</h2>
+            <span class="menu-but">Menu <i class="ti-menu"></i></span>
+        </div>
+
+        <div class="drop-down menu-down">
+            <ul class="list-unstyled">
+                <li><a href="/projects">PROJECTS</a></li>
+                <%if(tracks){%>
+                  <%tracks.forEach(t=>{%>
+                    <li><a href="/track/<%=t._id%>"><%=t.trackName%></a></li>
+                    <%})%>
+                <%}%>
+                <li><a href="/aboutme">ABOUT</a></li>
+                <li><a href="/contactme">CONTACT ME</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--End Drop down Menu-->
+
+    <!--Start Content-->
+    <div class="content-admin">
+        <!--Strat Header-->
+        <header>
+            <div class="container">
+                <h2>
+                    Admin Login
+                </h2>
+            </div>
+        </header>
+        <!--End Header-->
+
+        <!--Start Art Works-->
+        <div class="global-work">
+            <%if(flashErorr){%>
+                <div class="user-message user-message-error">
+                  <h4><%=flashErorr%></h4>
+                </div>
+              <%}%>
+              <%if(flashSucess){%>
+                <div class="user-message user-message-suc">
+                  <h4><%=flashSucess%></h4>
+                </div>
+              <%}%>
+            <form class="login-form" action="/login" method="POST">
+                <label>Email</label>
+                <input type="email" placeholder="Email" name="email" required>
+                <label>Password</label>
+                <input type="password" placeholder="password" name="password" required>
+                <button class="btn">Login</button>
+            </form>
+        </div>
+        <!--End Art Works-->
+    </div>
+
+    <!--End Content-->
+
+
+
+    <!--Javascript files-->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+</body>
+</html>

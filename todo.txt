@@ -1,0 +1,2 @@
+1==>> edit & delete buttons 
+2==>> 500  & 404 pages
