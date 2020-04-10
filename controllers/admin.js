@@ -54,14 +54,14 @@ exports.postAddTrack=(req,res,next)=>{
   const track2 = track.trim();
   Track.findOne({trackName:track2}).then(result=>{
     if(result){
-      req.flash('error','track allready existng!...');
+      req.flash('error','track is already exsist!');
       return res.redirect('/admin');
     }else {
       const newTrack = new Track({
         trackName:track2
       });
       newTrack.save();
-      req.flash('suc','track added successfully!!');
+      req.flash('suc','track added successfully!');
       res.redirect('/admin');
     }
   })
@@ -88,7 +88,7 @@ exports.postAddProject=(req,res,next)=>{
         projDes:projectDesc
       });
         proj.save().then(out=>{
-          req.flash('suc','track added successfully!!');
+          req.flash('suc','track added successfully!');
           res.redirect('/admin');
         }).catch(err=>{
           console.log(err);

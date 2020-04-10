@@ -44,5 +44,31 @@
             color:#dedede;
             padding: 5px 10px;
         }
+
+        .card-buttons {
+            display: flex;
+            flex-direction: row;
+            align-content: stretch;
+            form {
+                width: 100%;
+
+                .btn {
+                    cursor: pointer;
+                    color: #fff;
+                    width: 100%;
+                    border-radius: 0;
+                }
+
+                .red {
+                    background-color: rgba($color: red, $alpha: 0.5);
+                    
+                }
+
+                .green {
+                    background-color: rgba($color: green, $alpha: 0.5);
+                    
+                }
+            }
+        }
     }
 }

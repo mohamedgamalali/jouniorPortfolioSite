@@ -23,7 +23,7 @@
 
               <%if(projects.length===0){%>
                 <div class="col-lg-6">
-                    <h1>no projects found!!</h1>
+                    <p>no projects found</p>
                 </div>
               <%}else {%>
                   <div class="col-lg-6">
@@ -36,6 +36,15 @@
                       <img src="<%=e.img%>" alt="art work bu jounior">
                       <p><%=e.projName%></p>
                       <span><%=e.date.getDate()%> / <%=e.date.getMonth()%></span>
+                      <div class="card-buttons">
+                        <form>
+                            <button type="button" class="btn green">Edit</button>
+                        </form>
+
+                        <form>
+                            <button type="button" class="btn red">Delete</button>
+                        </form>
+                    </div>
                   </div>
                   <p hidden><%=count++%></p>
                 <%})%>

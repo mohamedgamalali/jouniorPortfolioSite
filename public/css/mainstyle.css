@@ -292,6 +292,21 @@ aside {
       background-color: rgba(0, 0, 0, 0.8);
       color: #dedede;
       padding: 5px 10px; }
+    .global-work .art-card .card-buttons {
+      display: flex;
+      flex-direction: row;
+      align-content: stretch; }
+      .global-work .art-card .card-buttons form {
+        width: 100%; }
+        .global-work .art-card .card-buttons form .btn {
+          cursor: pointer;
+          color: #fff;
+          width: 100%;
+          border-radius: 0; }
+        .global-work .art-card .card-buttons form .red {
+          background-color: rgba(255, 0, 0, 0.5); }
+        .global-work .art-card .card-buttons form .green {
+          background-color: rgba(0, 128, 0, 0.5); }
 
 .contact-me {
   padding: 50px 20px; }
@@ -405,22 +420,44 @@ aside {
   .content-admin .global-work .login-form {
     width: 50%;
     margin: auto; }
+    .content-admin .global-work .login-form .user-message-error {
+      margin: 10px 0;
+      width: 100%; }
+  .content-admin .global-work .user-message {
+    margin: 0 20px;
+    width: 70%;
+    padding: 10px; }
+    .content-admin .global-work .user-message h4 {
+      font-size: 1.1rem;
+      margin: 0;
+      padding: 10px; }
+  .content-admin .global-work .user-message-suc {
+    background-color: rgba(0, 128, 0, 0.3);
+    border: 1px solid green; }
+  .content-admin .global-work .user-message-error {
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid red; }
 
-.user-message{
-  margin: auto;
-  width: 90%;
-  border: 1px solid #4771fa;
-  padding: 1rem;
-  border-radius: 3px;
-  background: #b9c9ff;
-}
-.user-message-error{
-  border-color: red;
-  background: rgb(255,176,176);
-}
-.user-message-suc{
-  border-color: green;
-  background: #d8ebb5;
-}
+.not-found .container {
+  height: 100%; }
+.not-found .not-info {
+  margin: 70px; }
+  .not-found .not-info h1 {
+    font-size: 130px;
+    font-weight: bold; }
+  .not-found .not-info p {
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0; }
+    .not-found .not-info p:nth-of-type(2) {
+      font-size: 20px; }
+  .not-found .not-info .btn {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px; }
+.not-found img {
+  width: 100%;
+  display: block; }
 
 /*# sourceMappingURL=mainstyle.css.map */

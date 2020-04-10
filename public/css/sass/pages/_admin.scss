@@ -99,6 +99,33 @@
         .login-form {
             width: 50%;
             margin: auto;
+            .user-message-error {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+        }
+
+        .user-message {
+            margin: 0 20px;
+            width: 70%;
+            padding: 10px;
+
+            h4 {
+                font-size: 1.1rem;
+                margin: 0;
+                padding: 10px;
+            }
+        }
+
+        .user-message-suc {
+            background-color: rgba($color: green, $alpha: .3);
+            border: 1px solid green;
+        }
+
+        .user-message-error {
+            background-color: rgba($color: red, $alpha: .3);
+            border: 1px solid red;
         }
 
     }

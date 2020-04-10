@@ -17,18 +17,22 @@ menuBut.addEventListener('click', function () {
 
 //selecting the clciked element
 for(var i = 0; i<artCard.length;i++) {
-    artCard[i].addEventListener('click', function () {
+    artCard[i].addEventListener('click', function (evt) {
+        let target = evt.target;
+        if (!target.className.includes('btn')) {
+            const clickedImg = this.children[0].getAttribute('src');
+            const clickedLabel = this.children[1].textContent;
+            const clickedDate = this.children[2].textContent;
 
-        const clickedImg = this.children[0].getAttribute('src');
-        const clickedLabel = this.children[1].textContent;
-        const clickedDate = this.children[2].textContent;
+            mediaView.style.display = 'block';
 
-        mediaView.style.display = 'block';
-
-        projectInfo.children[0].textContent = clickedLabel;
-        projectInfo.children[2].textContent = clickedDate;
-        
-        mediaImg.setAttribute('src', clickedImg);
+            projectInfo.children[0].textContent = clickedLabel;
+            projectInfo.children[2].textContent = clickedDate;
+    
+            mediaImg.setAttribute('src', clickedImg);
+        } else {
+            //nothing
+        }
             
     })
 }

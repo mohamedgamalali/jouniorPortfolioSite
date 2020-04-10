@@ -25,6 +25,7 @@
         <div class="global-work">
 
             <h3>projects i have done</h3>
+
             <div class="row">
 
               <%if(projects.length===0){%>
@@ -39,15 +40,27 @@
                     <div class="col-lg-4">
                   <%}%>
                   <div class="art-card">
-                      <img src="<%=e.img%>" alt="art work bu jounior">
+                      <img src="<%=e.img%>" alt="art work by jounior">
                       <p><%=e.projName%></p>
                       <span><%=e.date.getDate()%> / <%=e.date.getMonth()%></span>
+
+                      <div class="card-buttons">
+                        <form>
+                            <button type="button" class="btn green">Edit</button>
+                        </form>
+
+                        <form>
+                            <button type="button" class="btn red">Delete</button>
+                        </form>
+                    </div>
+
                   </div>
                   <p hidden><%=count++%></p>
                 <%})%>
                 </div>
               <%}%>
-                <!-- <div class="col-lg-4">
+
+                <!--<div class="col-lg-4">
                     <div class="art-card">
                         <img src="/imgs/art/1.png" alt="art work bu jounior">
                         <p>ESCAPE</p>
@@ -89,7 +102,7 @@
                         <span>08/19</span>
                     </div>
 
-                </div> -->
+                </div>--> 
 
             </div>
         </div>

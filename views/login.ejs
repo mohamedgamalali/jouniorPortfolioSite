@@ -59,17 +59,17 @@
 
         <!--Start Art Works-->
         <div class="global-work">
-            <%if(flashErorr){%>
-                <div class="user-message user-message-error">
-                  <h4><%=flashErorr%></h4>
-                </div>
-              <%}%>
-              <%if(flashSucess){%>
-                <div class="user-message user-message-suc">
-                  <h4><%=flashSucess%></h4>
-                </div>
-              <%}%>
             <form class="login-form" action="/login" method="POST">
+                <%if(flashErorr){%>
+                    <div class="user-message user-message-error">
+                      <h4><%=flashErorr%></h4>
+                    </div>
+                  <%}%>
+                  <%if(flashSucess){%>
+                    <div class="user-message user-message-suc">
+                      <h4><%=flashSucess%></h4>
+                    </div>
+                  <%}%>
                 <label>Email</label>
                 <input type="email" placeholder="Email" name="email" required>
                 <label>Password</label>
