@@ -10,7 +10,9 @@ Track.find({}).then(result=>{
     tracks = result ;
 
 }).catch(err=>{
-  console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
 });
 
 // bcrypt.hash('500500500',12)
@@ -47,7 +49,11 @@ exports.getLogin = (req,res,next)=>{
 
 exports.getlogOut = (req,res,next)=>{
   req.session.destroy(err => {
-    console.log(err);
+    if(err){
+      const error = new Error(err);
+      error.httpStatusCode = 500 ;
+      return next(error);
+    }
     res.redirect('/');
   });
 }
@@ -77,12 +83,16 @@ exports.postLogin = (req,res,next)=>{
                 }
             })
             .catch(err=>{
-                console.log(err);
+              const error = new Error(err);
+              error.httpStatusCode = 500 ;
+              return next(error);
             })
         }
     })
     .catch(err=>{
-        console.log(err);
+      const error = new Error(err);
+      error.httpStatusCode = 500 ;
+      return next(error);
         
     });
     

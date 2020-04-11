@@ -10,6 +10,10 @@ const selectBox = document.querySelector('.select-box');
 const addBut = document.querySelector('.add-track');
 const trackInput = document.querySelector('.tname');
 
+
+
+
+
 //drop down menu.
 menuBut.addEventListener('click', function () {
     dropMenu.classList.toggle('menu-down');

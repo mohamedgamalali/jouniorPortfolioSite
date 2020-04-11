@@ -42,17 +42,25 @@
                   <div class="art-card">
                       <img src="<%=e.img%>" alt="art work by jounior">
                       <p><%=e.projName%></p>
-                      <span><%=e.date.getDate()%> / <%=e.date.getMonth()%></span>
+                      <span><%=e.date.getDate()%> / <%=e.date.getMonth()+1%></span>
 
-                      <div class="card-buttons">
-                        <form>
-                            <button type="button" class="btn green">Edit</button>
-                        </form>
-
-                        <form>
-                            <button type="button" class="btn red">Delete</button>
-                        </form>
-                    </div>
+                      <%if(isLoggedIn){%>
+                        <%if(isLoggedIn){%>
+                            <div class="card-buttons">
+                                <!-- <form action="/admin/edit" method="post">
+                                <button type="submit" class="btn green">Edit</button>
+                                <input type="hidden" value="<%=e._id%>" name="projId">
+                            </form> -->
+                            <a href="/admin/edit/<%=e._id%>" class="btn green" >Edit</a>
+        
+                                <form action="/admin/delete" method="post">
+                                    <button type="submit" class="btn red">Delete</button>
+                                    <input type="hidden" value="<%=e._id%>" name="projId">
+                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                </form>
+                            </div>
+                        <%}%>
+                    <%}%>
 
                   </div>
                   <p hidden><%=count++%></p>

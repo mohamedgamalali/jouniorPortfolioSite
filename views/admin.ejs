@@ -82,6 +82,7 @@
                         <span>Add a new track</span>
                         <label for="tname">Track's Name</label>
                         <input class="tname" type="text" id="tname" name="track" placeholder="name of the track">
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                         <button type="submit" class="btn add-track">Add</button>
                     </form>
 
@@ -112,7 +113,7 @@
 
                         <label for="pbio">Project's Bio</label>
                         <textarea placeholder="about the project" name="desc" required></textarea>
-
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                         <button class="btn" type="submit">Upload</button>
                     </form>
 

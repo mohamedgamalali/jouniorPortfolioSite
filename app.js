@@ -1,60 +1,70 @@
-const express     = require('express');
-const bodyParser  = require('body-parser');
-const path        = require('path');
-const mongoose    = require('mongoose');
-const session     = require('express-session');
+const express      = require('express');
+const bodyParser   = require('body-parser');
+const path         = require('path');
+const mongoose     = require('mongoose');
+const session      = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const flash       = require('connect-flash');
-const multer = require('multer');
+const flash        = require('connect-flash');
+const multer       = require('multer');
+const csrf         = require('csurf');
 const User = require('./models/user');
 const Visit = require('./models/visit');
 
-let visitsCoun = 0;
 const app         = express();
 
-
+//ejs meddlewere
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const MONGODB_URI =
   'mongodb+srv://mohamed:gamal@cluster0-puljc.mongodb.net/jounior';
 
+  //multer
+  var storage=multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,'images')
+    },
+    filename:(req,file,cb)=>{
+    cb(null,new Date().toISOString()+'-' + file.originalname)
+    }})
+
+    var checkImage=function(file,cb){
+      var ext=path.extname(file.originalname);     
+      if(ext==='.png'||ext==='.jpg'||ext==='.jpeg'){
+          cb(null,true)
+      }else{
+          cb('not an image',false)
+      }
+      }
+      
+      
+      var upload=multer({
+          storage:storage,
+          fileFilter:function(req,file,cb){
+              checkImage(file,cb)
+          }
+      })
+      
+      app.use(upload.single('image'));
+
+  //mongoose session store
   const store = new MongoDBStore({
     uri: MONGODB_URI,
     collection: 'sessions'
   });
 
-  const fileStorage = multer.diskStorage({
-  destination:(req,file,cb)=>{
-    cb(null,__dirname + '/images');
-  },
-  filename:(req,file,cb)=>{
-    cb(null,new Date().toISOString() + '-' +file.originalname );
-  }
 
-});
-
-const fileFilter = (req,file,cb)=>{
-  if(file.mimetype === 'image/png'||file.mimetype === 'image/jpg'||file.mimetype === 'image/jpeg'){
-    cb(null,true);
-  }else {
-    cb(null,false);
-  }
-
-}
-
+//routes
 const mainRout    = require('./routes/main');
 const adminRout    = require('./routes/admin');
 const authRout    = require('./routes/auth');
 
-const path1 = path.resolve();
-
+//bodyParser & static Files
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(multer({storage:fileStorage,fileFilter:fileFilter}).single('image'));
-app.use(express.static(path.join(path1, 'public')));
-app.use('/images',express.static(path.join(path1, 'images')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images',express.static(path.join(__dirname, 'images')));
 
-
+//mongo session meddlewere
 app.use(
   session({
     secret: 'my secret',
@@ -63,6 +73,17 @@ app.use(
     store:store
   })
   );
+
+  //csrf protection 
+const csrfProtection = csrf();
+
+app.use(csrfProtection);
+app.use((req,res,next)=>{
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
+
+  //visits meddlewere
   app.use((req,res,next)=>{
     
     if(!req.session.seen){
@@ -106,12 +127,19 @@ app.use((req, res, next) => {
       throw new Error(err);
     });
 });
+                                /*error handeling*/
+    const errorContriller = require('./controllers/errors');
+    // app.use('/500',errorContriller.get500);
     
-
+    // app.use((err,req,res,next)=>{
+    //   res.redirect('/500');
+    // })
+    
+    app.use(errorContriller.get404);
 mongoose
 .connect(
   MONGODB_URI,{
-      useNewUrlParser: true,useUnifiedTopology: true}
+      useNewUrlParser: true,useUnifiedTopology: true,useFindAndModify: false }
 )
   .then(result => {
     app.listen(5000,()=>{

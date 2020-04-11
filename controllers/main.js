@@ -18,7 +18,9 @@ Track.find({}).then(result=>{
     tracks = result ;
 
 }).catch(err=>{
-  console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
 });
  
   Project.find({})
@@ -37,7 +39,9 @@ Track.find({}).then(result=>{
     });
   })
   .catch(err=>{
-    console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
   })
   // res.render('index',{
   //   pageTitle:'projects',
@@ -47,35 +51,38 @@ Track.find({}).then(result=>{
 }
 
 exports.getContactMe=(req,res,next)=>{
-  let tracks = null ;
 Track.find({}).then(result=>{
-    tracks = result ;
-
-}).catch(err=>{
-  console.log(err);
-});
-  res.render('contactme',{
+  return res.render('contactme',{
     pageTitle:'contact Me',
     pagePath:'/contactme',
-    tracks:tracks,
+    tracks:result,
     isLoggedIn:req.session.isLoggedIn
   });
+}).catch(err=>{
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
+});
+  
 }
 
 exports.getAboutme=(req,res,next)=>{
-  let tracks = null ;
+  
 Track.find({}).then(result=>{
-    tracks = result ;
+    return res.render('aboutme',{
+      pageTitle:'About Me',
+      pagePath:'/aboutme',
+      tracks:result,
+      isLoggedIn:req.session.isLoggedIn
+    });
 
 }).catch(err=>{
-  console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
 });
-  res.render('aboutme',{
-    pageTitle:'About Me',
-    pagePath:'/aboutme',
-    tracks:tracks,
-    isLoggedIn:req.session.isLoggedIn
-  });
+
+ 
 }
 exports.getTrack=(req,res,next)=>{
   let tracks = null ;
@@ -83,7 +90,9 @@ Track.find({}).then(result=>{
     tracks = result ;
 
 }).catch(err=>{
-  console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
 });
   const trackId = mongoose.Types.ObjectId(req.params.track);
   let total = 0 ;
@@ -108,7 +117,9 @@ Track.find({}).then(result=>{
               base:0
             });
           }).catch(err=>{
-            console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500 ;
+            return next(error);
           })
         }else {
           console.log(result);
@@ -131,7 +142,9 @@ Track.find({}).then(result=>{
       })
    })
   .catch(err=>{
-    console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500 ;
+    return next(error);
   })
 
 }
