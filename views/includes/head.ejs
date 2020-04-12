@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=pageTitle%></title>
+    <link rel="icon" type="image/gif/png" href="/imgs/icon.png">
+
+
+    <!--Start CSS links-->
+    <link rel="stylesheet" href="/css/bootstrap.css"> <!--Bootstrap.-->
+    <link rel="stylesheet" href="/css/themify-icons.css"> <!--Themify icons.-->
+    <link rel="stylesheet" href="/css/animation.css">
+    <link rel="stylesheet" href="/css/mainstyle.css"> <!--main style css file.-->
+
+</head>
+
+
+<body>
+
+    <!--Start Drop down Menu for small screen-->
+    <nav>
+
+        <div class="upper-nav">
+            <ul class="list-unstyled social-media">
+                <li><a href="https://www.facebook.com/Muhaameedd.Ashraf"><i class="ti-facebook"></i></a></li>
+                <li><a href="https://twitter.com/Jrrmohamed"><i class="ti-twitter-alt"></i></a></li>
+                <li><a href="https://www.instagram.com/jouniorone/"><i class="ti-instagram"></i></a></li>
+            </ul>
+            <h2>JR.</h2>
+            <span class="menu-but">Menu <i class="ti-menu"></i></span>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="drop-down menu-down">
+            <ul class="list-unstyled">
+                <li><a href="/projects">PROJECTS</a></li>
+                <%if(tracks){%>
+                  <%tracks.forEach(t=>{%>
+                    <li><a href="/track/<%=t._id%>"><%=t.trackName%></a></li>
+                    <%})%>
+                <%}%>
+                <li><a href="/aboutme">ABOUT</a></li>
+                <li><a href="/contactme">CONTACT ME</a></li>
+                <%if(isLoggedIn){%>
+                    <li><a href="/admin">ADMIN</a></li>
+                    <li><a href="/logOut">LOG OUT</a></li>
+                <%}%>
+            </ul>
+        </div>
+    </nav>
+
+    <aside>
+        <img src="/imgs/personal.jfif" alt="Jounior's Picture">
+        <h1>JR.</h1>
+        <span>Visual Artist</span>
+
+        <ul class="list-unstyled">
+            <li><a href="/projects">PROJECTS</a></li>
+            <%if(tracks){%>
+              <%tracks.forEach(t=>{%>
+                <li><a href="/track/<%=t._id%>"><%=t.trackName%></a></li>
+                <%})%>
+            <%}%>
+        </ul>
+
+        <ul class="list-unstyled">
+            <li><a href="/aboutme">ABOUT</a></li>
+            <li><a href="/contactme">CONTACT ME</a></li>
+            
+            <%if(isLoggedIn){%>
+                <li><a href="/admin">ADMIN</a></li>
+                <li><a href="/logOut">LOG OUT</a></li>
+            <%}%>
+        </ul>
+
+        <ul class="list-unstyled social-media">
+            <li><a href="https://www.facebook.com/Muhaameedd.Ashraf"><i class="ti-facebook"></i></a></li>
+            <li><a href="https://twitter.com/Jrrmohamed"><i class="ti-twitter-alt"></i></a></li>
+            <li><a href="https://www.instagram.com/jouniorone/"><i class="ti-instagram"></i></a></li>
+        </ul>
+
+        <p><a href="https://www.behance.net/jounior1" target="_blank">Behance</a></p>
+        <span class="copyright-label">Copyright JR. &copy; All rights reserved.</span>
+    </aside>

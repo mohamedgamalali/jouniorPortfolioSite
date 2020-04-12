@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR. - Admin Control Panel</title>
+    <link rel="icon" type="image/gif/png" href="/imgs/icon.png">
+
+
+    <!--Start CSS links-->
+    <link rel="stylesheet" href="/css/bootstrap.css"> <!--Bootstrap.-->
+    <link rel="stylesheet" href="/css/themify-icons.css"> <!--Themify icons.-->
+    <link rel="stylesheet" href="/css/mainstyle.css"> <!--main style css file.-->
+
+</head>
+
+
+<body>
+
+    <!--Start Drop down Menu for small screen-->
+    <nav class="admin-nav">
+
+        <div class="upper-nav">
+            <ul class="list-unstyled social-media">
+                <li><a href="https://www.facebook.com/Muhaameedd.Ashraf"><i class="ti-facebook"></i></a></li>
+                <li><a href="https://twitter.com/Jrrmohamed"><i class="ti-twitter-alt"></i></a></li>
+                <li><a href="https://www.instagram.com/jouniorone/"><i class="ti-instagram"></i></a></li>
+            </ul>
+            <h2>JR.</h2>
+            <span class="menu-but">Menu <i class="ti-menu"></i></span>
+        </div>
+
+        <div class="drop-down menu-down">
+            <ul class="list-unstyled">
+              <li><a href="/projects">PROJECTS</a></li>
+              <%if(tracks){%>
+                <%tracks.forEach(t=>{%>
+                  <li><a href="/track/<%=t._id%>"><%=t.trackName%></a></li>
+                  <%})%>
+              <%}%>
+              <li><a href="/aboutme">ABOUT</a></li>
+              <li><a href="/contactme">CONTACT ME</a></li>
+              <%if(isLoggedIn){%>
+                <li><a href="/logOut">LOG OUT</a></li>
+            <%}%>
+            </ul>
+        </div>
+    </nav>
+    <!--End Drop down Menu-->
+
+    <!--Start Content-->
+    <div class="content-admin">
+        <!--Strat Header-->
+        <header>
+            <div class="container">
+                <h2>
+                    Admin Control Panel
+                </h2>
+                <span>Welcome, JR.</span>
+
+            </div>
+        </header>
+        <!--End Header-->
+
+        <!--Start Art Works-->
+        <div class="global-work">
+
+            <div class="row">
+
+                <div class="col-lg-8">
+                  <%if(flashErorr){%>
+                    <div class="user-message user-message-error">
+                      <h4><%=flashErorr%></h4>
+                    </div>
+                  <%}%>
+                  <%if(flashSucess){%>
+                    <div class="user-message user-message-suc">
+                      <h4><%=flashSucess%></h4>
+                    </div>
+                  <%}%>
+
+                    <form action="/admin/editPost" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="hId" value="<%=project._id%>">
+                        <span>Upload a new project.</span>
+                        <label for="pname">Project's Name</label>
+                        <input type="text" id="pname" placeholder="name of the project" 
+                        value="<%=project.projName%>"
+                        name="projectName" required>
+
+                        <button id="hiddenDate" value="<%=project.date%>"hidden></button>
+                        <label for="pdate">Project's Date</label>
+                        <input type="date" id="pdate" name="projectDate" required>
+
+                        <label for="pfile">Project's Files</label>
+                        <input type="file" id="pfile" name="image">
+
+                        <label for="ptrack" >Project's Track</label>
+
+                        <%if(tracks.length>0){%>
+                            <select class="select-box" id="ptrack" name="track"required>
+                          <%tracks.forEach(t=>{%>
+                            <%if(t.trackName==project.track.trackName){%>
+                                <option value="<%=t._id%>" selected><%=t.trackName%></option>
+                            <%}else{%>
+                                <option value="<%=t._id%>"><%=t.trackName%></option>
+                            <%}%>
+                            <%})%>
+                            </select>
+                        <%}else{%>
+                            <select class="select-box" id="ptrack" name="track" required disabled>
+                              <option>add track first</option>
+                            </select>
+                          <%}%>
+
+                        <label for="pbio">Project's Bio</label>
+                        <textarea placeholder="about the project" name="desc" required><%=project.projDes%></textarea>
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <button class="btn" type="submit">Upload</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <!--End Art Works-->
+    </div>
+
+    <!--End Content-->
+
+    <!--Start Media Viewer-->
+    <div class="media-view">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="/imgs/art/5.png" alt="art">
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-info">
+                        <h2>ESCAPE</h2>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, ea tenetur doloribus magni tempore aliquam laudantium ad ipsum, fuga obcaecati repudiandae dolore, maxime modi voluptatem odit aspernatur quibusdam quod molestias.
+                        </p>
+                        <span>21/03/2020</span>f
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <i class="ti-close"></i>
+    </div>
+    <!--End Media Viewer-->
+
+
+    <script src="/js/setDate.js"></script>
+    <!--Javascript files-->
+    <%- include('includes/end.ejs') %>

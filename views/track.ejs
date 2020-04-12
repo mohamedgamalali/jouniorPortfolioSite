@@ -1,0 +1,131 @@
+<%- include('includes/head.ejs') %>
+
+
+
+    <!--Start Content-->
+    <div class="content">
+        <!--Strat Header-->
+        <header>
+            <div class="container">
+                <h2>
+                    <%=pageTitle%>
+                </h2>
+                <p><a href="https://www.behance.net/jounior1" target="_blank">Behance</a></p>
+
+            </div>
+        </header>
+        <!--End Header-->
+
+        <!--Start Art Works-->
+        <div class="global-work">
+
+            <div class="row">
+
+              <%if(projects.length===0){%>
+                <div class="col-lg-6">
+                    <p>no projects found</p>
+                </div>
+              <%}else {%>
+                  <div class="col-lg-6">
+                <%projects.forEach(e=>{%>
+                  <%if(count!=0&&count%base==0){%>
+                    </div>
+                    <div class="col-lg-6">
+                  <%}%>
+                  <div class="art-card">
+                      <img src="/<%=e.img%>" alt="art work by jounior">
+                      <p><%=e.projName%></p>
+                      <span><%=e.date.getDate()%> / <%=e.date.getMonth()+1%></span>
+                      <p class="desc" hidden><%=e.projDes%></p>
+                      <%if(isLoggedIn){%>
+                        <div class="card-buttons">
+                            <!-- <form action="/admin/edit" method="post">
+                                <button type="submit" class="btn green">Edit</button>
+                                <input type="hidden" value="<%=e._id%>" name="projId">
+                            </form> -->
+                            <a href="/admin/edit/<%=e._id%>" class="btn green">Edit</a>
+                            <form action="/admin/delete" method="post">
+                                <button type="submit" class="btn red">Delete</button>
+                                <input type="hidden" value="<%=e._id%>" name="projId">
+                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            </form>
+                        </div>
+                    <%}%>
+                      
+                  </div>
+                  <p hidden><%=count++%></p>
+                <%})%>
+                </div>
+              <%}%>
+                <!-- <div class="col-lg-6">
+                    <div class="art-card">
+                        <img src="/imgs/art/1.png" alt="art work bu jounior">
+                        <p>ESCAPE</p>
+                        <span>08/19</span>
+                    </div>
+
+                    <div class="art-card">
+                        <img src="/imgs/art/2.png" alt="art work bu jounior">
+                        <p>EMPTY</p>
+                        <span>08/19</span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="art-card">
+                        <img src="/imgs/art/3.jpg" alt="art work bu jounior">
+                        <p>Scattered Thoughts</p>
+                        <span>08/19</span>
+                    </div>
+
+                    <div class="art-card">
+                        <img src="/imgs/art/4.png" alt="art work bu jounior">
+                        <p>Different</p>
+                        <span>08/19</span>
+                    </div>
+                </div> -->
+
+
+
+            </div>
+        </div>
+        <!--End Art Works-->
+    </div>
+
+    <!--End Content-->
+
+    <!--Start Media Viewer-->
+    <div class="media-view">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="/imgs/art/5.png" alt="art">
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-info">
+                        <h2>ESCAPE</h2>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, ea tenetur doloribus magni tempore aliquam laudantium ad ipsum, fuga obcaecati repudiandae dolore, maxime modi voluptatem odit aspernatur quibusdam quod molestias.
+                        </p>
+                        <span>21/03/2020</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <i class="ti-close"></i>
+    </div>
+    <!--End Media Viewer-->
+
+    <!--Start Loading Screen-->
+    <div class="main-loading">
+        <div class="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <!--End Loading Screen-->
+    
+    <%- include('includes/end.ejs') %>

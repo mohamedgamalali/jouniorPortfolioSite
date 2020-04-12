@@ -1,0 +1,11 @@
+1==>> edit & delete buttons - done
+2==>> 500  & 404 pages - done
+-----------------------------------
+tasks for you,
+
+1- fix images error IMPORTANT!!! - done 
+2- adding tracks dynamically to CONTACT ME and ABOUT ME. - done
+3- edit & delete routs - done
+4- handling errors - done
+5- csrf token
+ 

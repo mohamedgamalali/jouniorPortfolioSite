@@ -1,0 +1,103 @@
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba($color: #000000, $alpha: .5);
+}
+
+.heading {
+    padding-top: 80px;
+    font-weight: bold;
+    color: $secondColor;
+    font-size: 35px;
+    text-align: center;
+}
+
+.all-span {
+    text-align: center;
+    padding-bottom: 80px;
+    display: block;
+
+    a {
+        color: $productColor;
+
+        &:hover {
+            text-decoration: none;
+        } 
+    }
+}
+
+
+
+.owl-carousel {
+    a {
+
+        .first-img {
+            @include prefixer(transition,all .2s ease-in-out,webkit moz o);
+            position: absolute;
+            
+        }
+
+        .first-img {
+            z-index: 9999;
+
+            &:hover {
+                opacity: 0;
+            }
+        }
+    }
+
+    .info {
+        display: block;
+
+        .name {
+            display: block;
+            text-align: center;
+            margin: 5px 0;
+            color:$secondColor;
+
+            a {
+                color:$secondColor;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .price {
+            text-align: center;
+            color:$whiteColor;
+
+            .real-price {
+                text-decoration: line-through;
+                margin-right: 5px;
+                color:$whiteColor;
+            }
+        }
+    }
+}
+
+.clearfix {
+    overflow: auto;
+    clear: both;
+}
+
+.disnone{
+    display: none;
+}
+
+.container {
+    height: 100%;
+}
+
+.menu-down {
+    height: 0;
+}
